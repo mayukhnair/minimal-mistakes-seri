@@ -38,7 +38,6 @@ layout: default
       else {
         jobs = jobs['job_openings'];
         $.each(jobs, function(index, value){
-          console.log(value)
           $('#job-listings').append(createAdHtml(value));
         });
       }
@@ -76,7 +75,7 @@ layout: default
         <div id="job-listings">
           <p>Loading job listings....</p>
         </div>
-        <p>Job listings are courtesy of EconJobMarket.</p>
+        <p><i>Job listings are courtesy of EconJobMarket.</i></p>
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 

@@ -21,15 +21,14 @@ layout: default
 <script type="text/javascript">
 
   function createAdHtml(data) {
-    ad_heading = "<h2>&#10148; "+data['adtitle']+"</h2>";
+    ad_heading = data['adtitle']
     ad_loc_shortname = "<b>"+data['shortname']+"</b>";
     ad_short_info = "<b>Position:</b> "+data['position_type']+"<br><b>Department:</b> "+data['department']+"<br><b>Location:</b> <a href='https://www.google.com/maps/@?api=1&map_action=map&center="+data['latitude']+'%2C'+data['longitude']+"' target='_blank'>"+data['name']+", "+data['country_code']+"</a>";
     ad_open_date = "<b>Application opens on:</b> <a style='color:DarkGreen'>"+new Date(data['startdate']).toLocaleDateString('en-in', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) +"</a>"
     ad_close_date = "<b>Application closes on:</b> <a style='color:Red'>"+new Date(data['enddate']).toLocaleDateString('en-in', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) +"</a>" 
-    ad_text = "<p>"+data['adtext'].split(' ').slice(0,49).join(' ')+"....</p>";
     ad_full_url = "<a href='https://econjobmarket.org/positions?show=all&type=&position_type_id=&category_id=&iso2="+data['country_code']+"#ad-"+data['posid']+"' target='_blank'>See full ad</a>"
 
-    return ad_heading+"<br>"+ad_loc_shortname+"<br>"+ad_short_info+"<br>"+ad_open_date+"<br>"+ad_close_date+"<br>"+ad_text+ad_full_url+"<br><br>"
+    return "<details><summary markdown='span'><em><b>"+ad_heading+"</b></em></summary>"+ad_loc_shortname+"<br>"+ad_short_info+"<br>"+ad_open_date+"<br>"+ad_close_date+"<br>"+ad_full_url+"</details><br>"
   }
 
   function parseResults(data) {
@@ -75,10 +74,12 @@ layout: default
             </nav>
           </aside>
         {% endif %}
+        <p>Click on ▶ to expand the job listing and to access the full ad.</p>
         <div id="job-listings">
           <p>Loading job listings....</p>
         </div>
-        <p><i>Job listings are courtesy of EconJobMarket.</i></p>
+        <br>
+        <p>Job listings are courtesy of EconJobMarket.</p>
         {% if page.link %}<div><a href="{{ page.link }}" class="btn btn--primary">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
       </section>
 

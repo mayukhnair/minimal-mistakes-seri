@@ -1,4 +1,11 @@
-# [Minimal Mistakes Jekyll theme](https://mmistakes.github.io/minimal-mistakes/)
+# [Minimal Mistakes Jekyll theme (modified for SERI's website)](https://mmistakes.github.io/minimal-mistakes/)
+
+## Modification notes
+
+This is the Minimal Mistakes theme as-is but slightly modded for SERI's needs. Updates made:
+
+- IJME job listing page automatically pulls and displays entries from an endpoint on EconJobMarket's API.
+- Added a universal font size override under assets/css/main.scss
 
 [![LICENSE](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/mmistakes/minimal-mistakes/master/LICENSE)
 [![Jekyll](https://img.shields.io/badge/jekyll-%3E%3D%203.7-blue.svg)](https://jekyllrb.com/)

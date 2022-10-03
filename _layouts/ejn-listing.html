@@ -40,7 +40,9 @@ layout: default
       else {
         jobs = jobs['job_openings'];
         $.each(jobs, function(index, value){
-          $('#job-listings').append(createAdHtml(value));
+          if ( value['country_code'] == 'IN' ) {
+            $('#job-listings').append(createAdHtml(value));
+          }
         });
       }
     }

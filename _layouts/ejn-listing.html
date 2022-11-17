@@ -22,13 +22,14 @@ layout: default
 
   function createAdHtml(data) {
     ad_heading = data['adtitle']
+    uni_name_encode = data['name'].replace(/[^\w\s]|_/g, "").replace(/\s+/g, " ").toLowerCase();
     ad_loc_shortname = "<b>"+data['shortname']+"</b>";
-    ad_short_info = "<b>Position:</b> "+data['position_type']+"<br><b>Department:</b> "+data['department']+"<br><b>Location:</b> <a href='https://www.google.com/maps/@?api=1&map_action=map&center="+data['latitude']+'%2C'+data['longitude']+"' target='_blank'>"+data['name']+", "+data['country_code']+"</a>";
+    ad_short_info = "<b>Position:</b> "+data['position_type']+"<br><b>Department:</b> "+data['department']+"<br><b>Location:</b> <a href='https://www.google.com/maps/search/"+uni_name_encode+"/@"+data['latitude']+'%2C'+data['longitude']+",8z' target='_blank'>"+data['name']+", "+data['country_code']+"</a>";
     ad_open_date = "<b>Application opens on:</b> <a style='color:DarkGreen'>"+new Date(data['startdate']).toLocaleDateString('en-in', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) +"</a>"
     ad_close_date = "<b>Application closes on:</b> <a style='color:Red'>"+new Date(data['enddate']).toLocaleDateString('en-in', { weekday:"long", year:"numeric", month:"short", day:"numeric"}) +"</a>" 
     ad_full_url = "<a href='https://econjobmarket.org/positions?show=all&type=&position_type_id=&category_id=&iso2="+data['country_code']+"#ad-"+data['posid']+"' target='_blank'>See full ad</a>"
 
-    return "<details><summary markdown='span'><em><b>"+ad_heading+"</b></em></summary>"+ad_loc_shortname+"<br>"+ad_short_info+"<br>"+ad_open_date+"<br>"+ad_close_date+"<br>"+ad_full_url+"</details><br>"
+    return "<details><summary markdown='span'><em><b>"+ad_heading+"</b></em><br>"+ad_loc_shortname+"</summary>"+"<br>"+ad_short_info+"<br>"+ad_open_date+"<br>"+ad_close_date+"<br>"+ad_full_url+"</details><br>"
   }
 
   function parseResults(data) {
